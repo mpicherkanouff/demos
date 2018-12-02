@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="demosceneproject-master/glm-cs180c-1.0.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/glm.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw-javadoc.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw-natives-linux.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw-natives-macos.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw-natives-windows.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw-sources.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-glfw.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-javadoc.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-natives-linux.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-natives-macos.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-natives-windows.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal-javadoc.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal-natives-linux.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal-natives-macos.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal-natives-windows.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal-sources.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-openal.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl-javadoc.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl-natives-linux.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl-natives-macos.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl-natives-windows.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl-sources.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-opengl.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl-sources.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/lwjgl/lwjgl.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/stb/lwjgl-stb-natives-linux.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/stb/lwjgl-stb-natives-macos.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/stb/lwjgl-stb-natives-windows.jar"/>
+	<classpathentry kind="lib" path="demosceneproject-master/stb/lwjgl-stb.jar"/>
+	<classpathentry kind="output" path="demosceneproject-master/CS180C/bin"/>
+</classpath>
