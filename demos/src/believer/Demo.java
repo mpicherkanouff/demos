@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
@@ -24,7 +24,7 @@ public class Demo {
 	 * Song: Believer by Imagine Dragons
 	 * Youtube: https://www.youtube.com/watch?v=IhP3J0j9JmY
 	 */
-	private static String songFilename = "src/finalproject/Believer.ogg"; 
+	private static String songFilename = "src/believer/Believer.ogg"; 
 	private static int windowWidth = 500;
 	private static int windowHeight = 500;
 	private static float fps = 60.0f;

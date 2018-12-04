@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
@@ -26,8 +26,8 @@ public class Scene5 extends Scene {
 	private ShaderProgram shaders;
 	private boolean draw2 = false, draw3 = false, draw4 = false;
 	
-	private String vertShaderFile = "src/finalproject/scene1.vertex.glsl";
-	private String fragShaderFile = "src/finalproject/scene5.fragment.glsl";
+	private String vertShaderFile = "src/believer/scene1.vertex.glsl";
+	private String fragShaderFile = "src/believer/scene5.fragment.glsl";
 
 	private Window window;
 	

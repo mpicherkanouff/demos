@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;

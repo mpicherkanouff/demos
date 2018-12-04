@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
@@ -17,15 +17,15 @@ import glm.vec._4.Vec4;
 import java.util.Stack;
 import java.util.Vector;
 
-public class Scene1 extends Scene {
+public class Scene3 extends Scene {
 	
 	private Vector<Vec4> boxCoords, boxColors;
 	private Mesh box;
 	private float alpha = 1;
 	private ShaderProgram shaders;
 	
-	private String vertShaderFile = "src/finalproject/scene1.vertex.glsl";
-	private String fragShaderFile = "src/finalproject/scene1.fragment.glsl";
+	private String vertShaderFile = "src/believer/scene1.vertex.glsl";
+	private String fragShaderFile = "src/believer/scene1.fragment.glsl";
 
 	private Window window;
 	
@@ -36,7 +36,7 @@ public class Scene1 extends Scene {
 	private Mat4 projectionMatrix;
 	private Mat4 modelViewMatrix;
 	
-	public Scene1(float startTime) {
+	public Scene3(float startTime) {
 		super(startTime);
 		
 	}
@@ -70,7 +70,7 @@ public class Scene1 extends Scene {
 		boxCoords.add(new Vec4(7,-7,-10, 1));
 		boxCoords.add(new Vec4(-7,-7,-10, 1));
 		
-		for (int i = 0; i < boxCoords.size(); i++) {boxColors.add(new Vec4(.439f, .608f, .541f, 1));}
+		for (int i = 0; i < boxCoords.size(); i++) {boxColors.add(new Vec4(.878f, .890f, .757f,1));}
 		
 		glUniform1f(shaders.getUniformLocation("alpha"), alpha);
 		

@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;

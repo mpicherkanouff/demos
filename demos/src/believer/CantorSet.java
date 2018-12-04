@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import glm.vec._2.Vec2;
 import glm.vec._4.Vec4;

@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import org.lwjgl.opengl.GL;
 

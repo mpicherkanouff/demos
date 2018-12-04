@@ -1,4 +1,4 @@
-package finalproject;
+package believer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
@@ -17,26 +17,25 @@ import glm.vec._4.Vec4;
 import java.util.Stack;
 import java.util.Vector;
 
-public class Scene2 extends Scene {
+public class Scene4 extends Scene {
 	
 	private Vector<Vec4> boxCoords, boxColors;
 	private Mesh box;
 	private float alpha = 1;
 	private ShaderProgram shaders;
 	
-	private String vertShaderFile = "src/finalproject/scene1.vertex.glsl";
-	private String fragShaderFile = "src/finalproject/scene1.fragment.glsl";
+	private String vertShaderFile = "src/believer/scene1.vertex.glsl";
+	private String fragShaderFile = "src/believer/scene1.fragment.glsl";
 
 	private Window window;
 	
-	private double initTime, initTime2, currentTime;
+	private double initTime, currentTime;
 	private boolean fadePoint = false;
-	private boolean resets = false;
 	
 	private Mat4 projectionMatrix;
 	private Mat4 modelViewMatrix;
 	
-	public Scene2(float startTime) {
+	public Scene4(float startTime) {
 		super(startTime);
 		
 	}
@@ -70,12 +69,11 @@ public class Scene2 extends Scene {
 		boxCoords.add(new Vec4(7,-7,-10, 1));
 		boxCoords.add(new Vec4(-7,-7,-10, 1));
 		
-		for (int i = 0; i < boxCoords.size(); i++) {boxColors.add(new Vec4(.094f, .274f, .278f,1));}
+		for (int i = 0; i < boxCoords.size(); i++) {boxColors.add(new Vec4(.933f, .776f, .545f,1));}
 		
 		glUniform1f(shaders.getUniformLocation("alpha"), alpha);
 		
 		initTime = window.getRuntime();
-		initTime2 = initTime;
 	}
 	
 	private void updateMatrixUniforms() {
@@ -99,28 +97,10 @@ public class Scene2 extends Scene {
 			}
 		}
 		
-		if (fadePoint && !resets) {
+		if (fadePoint) {
 			if (alpha > 0) {
 				alpha -= 0.01f;
 				glUniform1f(shaders.getUniformLocation("alpha"), alpha);
-			}
-		} else if (fadePoint && resets) {
-			if (alpha > 0) {
-				alpha -= 0.03f;
-				glUniform1f(shaders.getUniformLocation("alpha"), alpha);
-			}
-		}
-		
-		if(currentTime - initTime2 >= 1.445) {
-			resets = true;
-			initTime2 = currentTime;
-			alpha = 1f;
-		}
-		
-		if (resets) {
-			if(currentTime - initTime2 >= .161) {
-				initTime2 = currentTime;
-				alpha = 1f;
 			}
 		}
 		
