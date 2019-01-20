@@ -20,11 +20,15 @@ import java.util.Vector;
 public class Scene7 extends Scene {
 	
 	private Vector<Vec4> boxCoords, boxColors, box2Coords, box2Colors, box3Coords, box3Colors,
-		box4Coords, box4Colors, numberCoords, numberColors;
+		box4Coords, box4Colors, box5Coords, box5Colors, box6Coords, box6Colors, box7Coords, box7Colors,
+		numberCoords, numberColors;
 	private Vector<Vec2> numberShape;
-	private Mesh box, box2, box3, box4, number;
+	private Mesh box, box2, box3, box4, 
+		box5, box6, box7, number;
 	private ShaderProgram shaders;
-	private boolean draw2 = false, draw3 = false, draw4 = false;
+	private boolean draw2 = false, draw3 = false, draw4 = false,
+			draw5 = false, draw6 = false, draw7 = false;
+	private int whichBox = 2;
 	
 	private String vertShaderFile = "src/believer/scene1.vertex.glsl";
 	private String fragShaderFile = "src/believer/scene5.fragment.glsl";
@@ -120,6 +124,21 @@ public class Scene7 extends Scene {
 		box4Coords = rotateBox(-Math.PI/12, box3Coords);
 		for (int i = 0; i < box4Coords.size(); i++) {box4Colors.add(new Vec4(.933f, .776f, .545f,1));}
 		
+		box5 = new Mesh(shaders);
+		box5Colors = new Vector<Vec4>();
+		box5Coords = rotateBox(-Math.PI/12, box4Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box5Colors.add(new Vec4(.439f, .608f, .541f,1));}
+		
+		box6 = new Mesh(shaders);
+		box6Colors = new Vector<Vec4>();
+		box6Coords = rotateBox(-Math.PI/12, box5Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box6Colors.add(new Vec4(.094f, .274f, .278f,1));}
+		
+		box7 = new Mesh(shaders);
+		box7Colors = new Vector<Vec4>();
+		box7Coords = rotateBox(-Math.PI/12, box6Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box7Colors.add(new Vec4(.878f, .890f, .757f,1));}
+		
 		number = new Mesh(shaders);
 		
 		Square pixel = new Square();
@@ -132,6 +151,9 @@ public class Scene7 extends Scene {
 		numberShape.add(new Vec2(-1,2));
 		numberShape.add(new Vec2(-1,-2));
 		numberShape.add(new Vec2(1,-2));
+		numberShape.add(new Vec2(0,-2));
+		numberShape.add(new Vec2(-1,-1));
+		numberShape.add(new Vec2(-1,0));
 		
 		for(int i =0; i < numberShape.size(); i++) {
 			for(int j = 0; j < pixel.shape.size(); j++) {
@@ -166,18 +188,29 @@ public class Scene7 extends Scene {
 		box.updateData(boxCoords, boxColors);
 		box.draw();
 		
-		if (!draw4) {
+		if (!draw7) {
 			if(currentTime - initTime >= (1.91/2)) {
-				if (!draw2) {
+				if (whichBox > 1) {
 					draw2 = true;
-					initTime = currentTime;
-				} else if (draw2 && !draw3) {
-					draw3 = true;
-					initTime = currentTime;
-				} else if (draw2 && draw3 && !draw4) {
-					draw4 = true;
-					initTime = currentTime;
 				}
+				if (whichBox > 2) {
+					draw3 = true;
+				}
+				if (whichBox > 3) {
+					draw4 = true;
+				}
+				if (whichBox > 4) {
+					draw5 = true;
+				}
+				if (whichBox > 5) {
+					draw6 = true;
+				}
+				if (whichBox > 6) {
+					draw7 = true;
+				}
+
+				whichBox++;
+				initTime = currentTime;
 			}
 		}
 		
@@ -194,6 +227,20 @@ public class Scene7 extends Scene {
 		if (draw4) {
 			box4.updateData(box4Coords, box4Colors);
 			box4.draw();
+		}
+		
+		if (draw5) {
+			box5.updateData(box5Coords, box5Colors);
+			box5.draw();
+		}
+		
+		if (draw6) {
+			box6.updateData(box6Coords, box6Colors);
+			box6.draw();
+		}
+		if (draw7) {
+			box7.updateData(box7Coords, box7Colors);
+			box7.draw();
 		}
 		
 	}

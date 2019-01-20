@@ -17,12 +17,14 @@ import glm.vec._4.Vec4;
 import java.util.Stack;
 import java.util.Vector;
 
-public class Scene6 extends Scene {
+public class Scene8 extends Scene {
 	
 	private Vector<Vec4> boxCoords, boxColors, box2Coords, box2Colors, box3Coords, box3Colors,
-		box4Coords, box4Colors, numberCoords, numberColors;
+		box4Coords, box4Colors, box5Coords, box5Colors, box6Coords, box6Colors, box7Coords, box7Colors,
+		numberCoords, numberColors;
 	private Vector<Vec2> numberShape;
-	private Mesh box, box2, box3, box4, number;
+	private Mesh box, box2, box3, box4, 
+		box5, box6, box7, number;
 	private ShaderProgram shaders;
 	private float decreaseNum;
 	
@@ -59,14 +61,14 @@ public class Scene6 extends Scene {
 								  0, 					  0, 					1, 0,
 								  0, 					  0, 					0, 1);
 		for(int i = 0; i < original.size(); i++) {
-			rotated.add(new Vec4 (original.get(i).x * .735, original.get(i).y * .735, original.get(i).z + 0.00001, 1));
+			rotated.add(new Vec4 (original.get(i).x * .819, original.get(i).y * .819, original.get(i).z + 0.00001, 1));
 			rotated.get(i).mul(rotationMatrix);
 		}
 		
 		return rotated;
 	}
 	
-	public Scene6(float startTime) {
+	public Scene8(float startTime) {
 		super(startTime);
 		
 	}
@@ -107,31 +109,49 @@ public class Scene6 extends Scene {
 		
 		box2 = new Mesh(shaders);
 		box2Colors = new Vector<Vec4>();
-		box2Coords = rotateBox(Math.PI/6, boxCoords);
+		box2Coords = rotateBox(-Math.PI/12, boxCoords);
 		for (int i = 0; i < box2Coords.size(); i++) {box2Colors.add(new Vec4(.094f, .274f, .278f,1));}
 		
 		box3 = new Mesh(shaders);
 		box3Colors = new Vector<Vec4>();
-		box3Coords = rotateBox(Math.PI/6, box2Coords);
+		box3Coords = rotateBox(-Math.PI/12, box2Coords);
 		for (int i = 0; i < box3Coords.size(); i++) {box3Colors.add(new Vec4(.878f, .890f, .757f,1));}
 		
 		box4 = new Mesh(shaders);
 		box4Colors = new Vector<Vec4>();
-		box4Coords = rotateBox(Math.PI/6, box3Coords);
+		box4Coords = rotateBox(-Math.PI/12, box3Coords);
 		for (int i = 0; i < box4Coords.size(); i++) {box4Colors.add(new Vec4(.933f, .776f, .545f,1));}
+		
+		box5 = new Mesh(shaders);
+		box5Colors = new Vector<Vec4>();
+		box5Coords = rotateBox(-Math.PI/12, box4Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box5Colors.add(new Vec4(.439f, .608f, .541f,1));}
+		
+		box6 = new Mesh(shaders);
+		box6Colors = new Vector<Vec4>();
+		box6Coords = rotateBox(-Math.PI/12, box5Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box6Colors.add(new Vec4(.094f, .274f, .278f,1));}
+		
+		box7 = new Mesh(shaders);
+		box7Colors = new Vector<Vec4>();
+		box7Coords = rotateBox(-Math.PI/12, box6Coords);
+		for (int i = 0; i < box4Coords.size(); i++) {box7Colors.add(new Vec4(.878f, .890f, .757f,1));}
 		
 		number = new Mesh(shaders);
 		
 		Square pixel = new Square();
 		
 		numberShape.add(new Vec2(0,0));
-		numberShape.add(new Vec2(0,1));
+		numberShape.add(new Vec2(1,0));
+		numberShape.add(new Vec2(1,1));
+		numberShape.add(new Vec2(1,2));
 		numberShape.add(new Vec2(0,2));
 		numberShape.add(new Vec2(-1,2));
-		numberShape.add(new Vec2(0,-1));
-		numberShape.add(new Vec2(0,-2));
 		numberShape.add(new Vec2(-1,-2));
 		numberShape.add(new Vec2(1,-2));
+		numberShape.add(new Vec2(0,-2));
+		numberShape.add(new Vec2(-1,-1));
+		numberShape.add(new Vec2(-1,0));
 		
 		for(int i =0; i < numberShape.size(); i++) {
 			for(int j = 0; j < pixel.shape.size(); j++) {
@@ -165,11 +185,6 @@ public class Scene6 extends Scene {
 			number.draw();
 		}
 		
-		if (numberColors.get(0).w > 0) {
-			number.updateData(numberCoords, numberColors);
-			number.draw();
-		}
-		
 		if (boxColors.get(0).w > 0) {
 			box.updateData(boxCoords, boxColors);
 			box.draw();
@@ -186,17 +201,64 @@ public class Scene6 extends Scene {
 			box4.updateData(box4Coords, box4Colors);
 			box4.draw();
 		}
+		if (box5Colors.get(0).w > 0) {
+			box5.updateData(box5Coords, box5Colors);
+			box5.draw();
+		}
+		if (box6Colors.get(0).w > 0) {
+			box6.updateData(box6Coords, box6Colors);
+			box6.draw();
+		}
+		if (box7Colors.get(0).w > 0) {
+			box7.updateData(box7Coords, box7Colors);
+			box7.draw();
+		}
 		
 		for (int i = 0; i < box4Coords.size(); i++) {
-			Vec4 temp = new Vec4(box4Coords.get(i).x, box4Coords.get(i).y - decreaseNum, box4Coords.get(i).z, box4Coords.get(i).w);
-			box4Coords.setElementAt(temp, i);
-			if (box4Colors.lastElement().w > 0) {
-				temp = new Vec4(box4Colors.get(i).x, box4Colors.get(i).y, box4Colors.get(i).z, box4Colors.get(i).w - 0.01f);
-				box4Colors.setElementAt(temp, i);
+			Vec4 temp = new Vec4(box7Coords.get(i).x, box7Coords.get(i).y - decreaseNum, box7Coords.get(i).z, box7Coords.get(i).w);
+			box7Coords.setElementAt(temp, i);
+			if (box7Colors.lastElement().w > 0) {
+				temp = new Vec4(box7Colors.get(i).x, box7Colors.get(i).y, box7Colors.get(i).z, box7Colors.get(i).w - 0.01f);
+				box7Colors.setElementAt(temp, i);
+			}
+		}
+		
+		
+		
+		if (currentTime - initTime >= .15) {
+			for (int i = 0; i < box6Coords.size(); i++) {
+				Vec4 temp = new Vec4(box6Coords.get(i).x, box6Coords.get(i).y - decreaseNum, box6Coords.get(i).z, box6Coords.get(i).w);
+				box6Coords.setElementAt(temp, i);
+				if (box6Colors.lastElement().w > 0) {
+					temp = new Vec4(box6Colors.get(i).x, box6Colors.get(i).y, box6Colors.get(i).z, box6Colors.get(i).w - 0.01f);
+					box6Colors.setElementAt(temp, i);
+				}
 			}
 		}
 		
 		if (currentTime - initTime >= .3) {
+			for (int i = 0; i < box5Coords.size(); i++) {
+				Vec4 temp = new Vec4(box5Coords.get(i).x, box5Coords.get(i).y - decreaseNum, box5Coords.get(i).z, box5Coords.get(i).w);
+				box5Coords.setElementAt(temp, i);
+				if (box5Colors.lastElement().w >0) {
+					temp = new Vec4(box5Colors.get(i).x, box5Colors.get(i).y, box5Colors.get(i).z, box5Colors.get(i).w - 0.01f);
+					box5Colors.setElementAt(temp, i);
+				}
+			}
+		}
+		
+		if (currentTime - initTime >= .45) {
+			for (int i = 0; i < box4Coords.size(); i++) {
+				Vec4 temp = new Vec4(box4Coords.get(i).x, box4Coords.get(i).y - decreaseNum, box4Coords.get(i).z, box4Coords.get(i).w);
+				box4Coords.setElementAt(temp, i);
+				if (box4Colors.lastElement().w > 0) {
+					temp = new Vec4(box4Colors.get(i).x, box4Colors.get(i).y, box4Colors.get(i).z, box4Colors.get(i).w - 0.01f);
+					box4Colors.setElementAt(temp, i);
+				}
+			}
+		}
+		
+		if (currentTime - initTime >= .6) {
 			for (int i = 0; i < box3Coords.size(); i++) {
 				Vec4 temp = new Vec4(box3Coords.get(i).x, box3Coords.get(i).y - decreaseNum, box3Coords.get(i).z, box3Coords.get(i).w);
 				box3Coords.setElementAt(temp, i);
@@ -207,11 +269,11 @@ public class Scene6 extends Scene {
 			}
 		}
 		
-		if (currentTime - initTime >= .6) {
+		if (currentTime - initTime >= .75) {
 			for (int i = 0; i < box2Coords.size(); i++) {
 				Vec4 temp = new Vec4(box2Coords.get(i).x, box2Coords.get(i).y - decreaseNum, box2Coords.get(i).z, box2Coords.get(i).w);
 				box2Coords.setElementAt(temp, i);
-				if (box2Colors.lastElement().w >0) {
+				if (box2Colors.lastElement().w > 0) {
 					temp = new Vec4(box2Colors.get(i).x, box2Colors.get(i).y, box2Colors.get(i).z, box2Colors.get(i).w - 0.01f);
 					box2Colors.setElementAt(temp, i);
 				}

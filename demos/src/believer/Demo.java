@@ -45,13 +45,14 @@ public class Demo {
 	 * but for your own benefit you should probably keep things in sequential order.
 	 */
 	private static Scene[] sceneList = new Scene[] { // TODO: replace these with your scenes!
-			new Scene7(0),
-//			new Scene1(0.3f),
-//			new Scene2(2.2f),
-//			new Scene3(4.1f),
-//			new Scene4(6.1f),
-//			new Scene5(8f),
-//			new Scene6(16.6f),
+			new Scene1(0.3f),
+			new Scene2(2.2f),
+			new Scene3(4.1f),
+			new Scene4(6.1f),
+			new Scene5(8f),
+			new Scene6(16.6f),
+			new Scene7(23.1f),
+			new Scene8(31.8f)
 	};
 		
 	/* Color palette: 
